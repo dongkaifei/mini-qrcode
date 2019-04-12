@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/qrcode/qrcode",
+    "pages/records/records",
+    "pages/picker/picker"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "qrcode",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#666",
+    "backgroundColor": "#fff",
+    "selectedColor": "#179B16",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "二维码生成",
+        "iconPath": "./images/index.png",
+        "selectedIconPath": "./images/index-selected.png"
+      },
+      {
+        "pagePath": "pages/records/records",
+        "text": "我的生成记录",
+        "iconPath": "./images/list.png",
+        "selectedIconPath": "./images/list-selected.png"
+      }
+    ]
+  }
+}

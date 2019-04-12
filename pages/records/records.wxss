@@ -1,0 +1,41 @@
+/* pages/records/records.wxss */
+
+.list-item {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.list-cell {
+  width: 640rpx;
+  height: 100rpx;
+  font-size: 32rpx;
+  padding: 10rpx;
+  line-height: 100rpx;
+  color: #666;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-content {
+  line-height: 40rpx;
+  margin-top: 10rpx;
+}
+
+.list-content-time {
+  font-size: 24rpx;
+}
+
+.warning-title {
+  color: #333;
+}
+
+.list-guide {
+  color: #1e90ff;
+}
+
+.list-line {
+  width: 660rpx;
+  height: 2rpx;
+  background: #eee;
+}

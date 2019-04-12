@@ -1,0 +1,46 @@
+/**index.wxss**/
+
+.form-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.qrcode-input {
+  width: 600rpx;
+  height: 250rpx;
+  border-radius: 10rpx;
+  border: 2rpx solid #ccc;
+  margin-top: 40rpx;
+  padding: 40rpx;
+}
+
+.btn-submit {
+  width: 400rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-top: 40rpx;
+}
+
+.color-list {
+  padding: 0rpx 60rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-top: 2rpx solid #eee;
+  border-bottom: 2rpx solid #eee;
+  margin-top: 40rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.color-des {
+  color: #444;
+  font-size: 32rpx;
+}
+
+.color-demo {
+  width: 100rpx;
+  height: 80rpx;
+  border: 2rpx solid #ccc;
+}

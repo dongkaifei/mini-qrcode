@@ -1,0 +1,7 @@
+<!--components/popup-auth/popup-auth.wxml-->
+<view class='popup-container' wx:if='{{isShow}}' bindtap='closePopup'>
+  <view class='popup-auth'>
+    <view class='auth-text'>保存功能需要访问相册的权限，请点击下方按钮手动打开</view>
+    <button type="primary" class='btn-save' bindtap='toOpenSetting'>打开权限设置</button>
+  </view>
+</view>

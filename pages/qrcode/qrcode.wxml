@@ -1,0 +1,9 @@
+<!--pages/qrcode/qrcode.wxml-->
+<view class="container">
+  <view class='qrcode-container'>
+    <canvas class='qrcode' canvas-id='qrcode' bindlongtap='toSave'></canvas>
+  </view>
+  <button type="primary" class='btn-save' bindtap='toSave'>保存到本地相册</button>
+  <!-- 打开权限设置 -->
+  <PopupAuth isShow='{{showPopup}}' bind:callback='getAuthRes'/>
+</view>

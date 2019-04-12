@@ -1,0 +1,16 @@
+<!--index.wxml-->
+<view class="container">
+  <view class='form-container'>
+    <textarea placeholder="请输入要生成的内容" name="textarea" class='qrcode-input' value='{{qrcodeData}}' bindinput="onTextChange" />
+    <button type="primary" class='btn-submit' disabled='{{!qrcodeData}}' bindtap='tapSubmit'>点击生成二维码</button>
+  </view>
+  <!-- 颜色拾取 -->
+  <view class='color-list' data-colorid='foreground' bindtap='toPickColor'>
+    <view class='color-des'>前景色：{{foregroundColor}}</view>
+    <view class='color-demo' style="background:{{foregroundColor}};"></view>
+  </view>
+  <view class='color-list' data-colorid='background' bindtap='toPickColor'>
+    <view class='color-des'>背景色：{{backgroundColor}}</view>
+    <view class='color-demo' style="background:{{backgroundColor}};"></view>
+  </view>
+</view>

@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.qrcode-container {
+  width: 500rpx;
+  height: 500rpx;
+  border: 2rpx solid #ccc;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40rpx;
+}
+
+.qrcode {
+  width: 400rpx;
+  height: 400rpx;
+}
+
+.btn-save {
+  width: 400rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-top: 40rpx;
+}

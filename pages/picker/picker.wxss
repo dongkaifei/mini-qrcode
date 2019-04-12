@@ -1,0 +1,43 @@
+/* pages/picker/picker.wxss */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 40rpx;
+}
+
+.color-list {
+  padding: 0rpx 8%;
+  width: 64%;
+  height: 100rpx;
+  line-height: 100rpx;
+  border: 2rpx solid #eee;
+  border-radius: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.color-des {
+  color: #444;
+  font-size: 32rpx;
+}
+
+.color-demo {
+  width: 100rpx;
+  height: 80rpx;
+  border: 2rpx solid #eee;
+}
+
+.color-picker {
+  margin-top: 20rpx;
+}
+
+.btn-save {
+  width: 400rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-top: 40rpx;
+}

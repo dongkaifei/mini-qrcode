@@ -1,0 +1,10 @@
+<view class="container">
+  <view class='color-list'>
+    <view class='color-des'>{{colorType=='foreground'?'前景色':'背景色'}}：{{colorData.pickerData.hex}}</view>
+    <view class='color-demo' style="background:{{colorData.pickerData.hex}};"></view>
+  </view>
+  <ColorPicker class="color-picker" colorData="{{colorData}}" rpxRatio="{{rpxRatio}}" bindchangecolor="onChangeColor"></ColorPicker>
+  <button type="primary" class='btn-save' bindtap='tapSaveColor'>
+    保存设置
+  </button>
+</view>

@@ -1,0 +1,13 @@
+<!--pages/records/records.wxml-->
+<view class="container">
+  <view class='list-item' wx:for="{{records}}" wx:key="{{item.id}}">
+    <view class='list-cell' data-id='{{item.id}}' bindtap='toQrcode'>
+      <view class='list-content'>
+        <text><text class='warning-title'>内容：</text>{{item.qrcodeData}}\n</text>
+        <text class='list-content-time'><text class='warning-title'>时间：</text>{{item.ctime}}</text>
+      </view>
+      <view class='list-guide'>查看</view>
+    </view>
+    <view class='list-line'></view>
+  </view>
+</view>
