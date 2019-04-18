@@ -2,7 +2,13 @@
 <view class="container">
   <view class='form-container'>
     <textarea placeholder="请输入要生成的内容" name="textarea" class='qrcode-input' value='{{qrcodeData}}' bindinput="onTextChange" />
-    <button type="primary" class='btn-submit' disabled='{{!qrcodeData}}' bindtap='tapSubmit'>点击生成二维码</button>
+    <button type="primary" class='btn-submit' disabled='{{!qrcodeData}}' bindtap='tapSubmit' wx:if='{{!isShowWxAvatar}}'>点击生成二维码</button>
+    <button type="primary" class='btn-submit' disabled='{{!qrcodeData}}' open-type='getUserInfo' bindgetuserinfo='setUserInfo' wx:if='{{isShowWxAvatar}}'>点击生成二维码</button>
+  </view>
+  <!-- 选择是否携带微信头像 -->
+  <view class='color-list'>
+    <view class='color-des'>是否携带微信头像</view>
+    <switch bindchange="switchWxAvatar" />
   </view>
   <!-- 颜色拾取 -->
   <view class='color-list' data-colorid='foreground' bindtap='toPickColor'>

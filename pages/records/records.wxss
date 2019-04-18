@@ -39,3 +39,23 @@
   height: 2rpx;
   background: #eee;
 }
+
+.no-found-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.img-no-found {
+  width: 242rpx;
+  height: 242rpx;
+  margin-top: -280rpx;
+}
+
+.des-no-found {
+  color: #2c3239;
+  font-size: 28rpx;
+  margin-top: 40rpx;
+}

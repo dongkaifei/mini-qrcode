@@ -9,7 +9,8 @@ Page({
   data: {
     qrcodeData: "",
     foregroundColor: '',
-    backgroundColor: ''
+    backgroundColor: '',
+    isShowWxAvatar: false
   },
   onLoad: function () {
 
@@ -25,13 +26,15 @@ Page({
       qrcodeData: e.detail.value
     });
   },
-  tapSubmit: function () {
+  tapSubmit: function (avatarUrl) {
     const {
+      isShowWxAvatar,
       qrcodeData,
       foregroundColor,
       backgroundColor
     } = this.data;
-    const id = setRecords(qrcodeData, 'normal', foregroundColor, backgroundColor);
+    const qrcodeType = isShowWxAvatar ? 'avatar' : 'normal';
+    const id = setRecords(qrcodeData, qrcodeType, foregroundColor, backgroundColor, avatarUrl);
     wx.navigateTo({
       url: `/pages/qrcode/qrcode?id=${id}`
     })
@@ -41,5 +44,20 @@ Page({
     wx.navigateTo({
       url: `/pages/picker/picker?type=${colorid}`
     })
+  },
+  setUserInfo(e) {
+    if (e.detail.userInfo && e.detail.userInfo.avatarUrl) {
+      this.tapSubmit(e.detail.userInfo.avatarUrl);
+    } else {
+      wx.showToast({
+        title: '授权失败！',
+        icon: 'none'
+      })
+    }
+  },
+  switchWxAvatar(e) {
+    this.setData({
+      isShowWxAvatar: e.detail.value
+    });
   }
 })

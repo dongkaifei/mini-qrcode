@@ -12,7 +12,6 @@ Page({
   data: {
     qrcodeW: rpx2px(400),
     qrcodeH: rpx2px(400),
-    QRCodeRes: {},
     showPopup: false,
     filePath: ""
   },
@@ -33,30 +32,58 @@ Page({
     } = this.data;
     const {
       qrcodeData,
+      qrcodeType,
       foregroundColor,
-      backgroundColor
+      backgroundColor,
+      avatarUrl,
     } = getRecordsById(id);
+    const objQrcode = { qrcodeW, qrcodeH, qrcodeData, foregroundColor, backgroundColor }
+    if (qrcodeType == 'normal') {
+      this.createQrcode(objQrcode);
+    } else {
+      const _self = this;
+      wx.downloadFile({
+        url: avatarUrl,
+        success: function (res) {
+          _self.createQrcode({ ...objQrcode, imgPath: res.tempFilePath });
+        }
+      })
+    }
+  },
+  createQrcode({ qrcodeW, qrcodeH, qrcodeData, foregroundColor, backgroundColor, imgPath }) {
     const QRCodeRes = new QRCode('qrcode', {
       text: qrcodeData,
-      image: '',
+      image: imgPath || '',
       width: qrcodeW,
       height: qrcodeW,
       colorDark: foregroundColor || "#1CA4FC",
       colorLight: backgroundColor || "white",
       correctLevel: QRCode.CorrectLevel.H,
+      callback: () => {
+        setTimeout(() => {
+          this.toExportImage(QRCodeRes);
+        }, 200);
+      }
     });
-    this.setData({
-      QRCodeRes
-    });
-    wx.hideLoading();
   },
-  toSave: function () {
-    this.data.QRCodeRes.exportImage(res => {
+  toExportImage(QRCodeRes) {
+    QRCodeRes.exportImage(res => {
       this.setData({
         filePath: res
       });
-      this.toAuthWritePhotosAlbum();
+      wx.hideLoading();
+    }, err => {
+      if (err) {
+        wx.hideLoading();
+        wx.showToast({
+          icon: 'none',
+          title: '二维码生成失败！',
+        })
+      }
     });
+  },
+  toSave: function () {
+    this.toAuthWritePhotosAlbum();
   },
   toAuthWritePhotosAlbum() {
     getAuthorize('scope.writePhotosAlbum',

@@ -12,7 +12,7 @@ Page({
     records: []
   },
   onShow: function(options) {
-    const records = getRecords();
+    const records = getRecords() || [];
     const newRecords = records.map(_val => {
       return {
         ..._val,

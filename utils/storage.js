@@ -1,4 +1,4 @@
-const setRecords = (qrcodeData, qrcodeType, foregroundColor, backgroundColor) => {
+const setRecords = (qrcodeData, qrcodeType, foregroundColor, backgroundColor, avatarUrl) => {
   //获取记录
   const recordsArr = getRecords() || [];
   //定义插入记录方法
@@ -9,6 +9,7 @@ const setRecords = (qrcodeData, qrcodeType, foregroundColor, backgroundColor) =>
       qrcodeData: qrcodeData,
       foregroundColor: foregroundColor,
       backgroundColor: backgroundColor,
+      avatarUrl: avatarUrl || '',
       ctime: new Date().getTime()
     });
   }
@@ -16,7 +17,12 @@ const setRecords = (qrcodeData, qrcodeType, foregroundColor, backgroundColor) =>
   let isNeedPush = true;
   let id = recordsArr.length + 1;
   for (let i = 0; i < recordsArr.length; i++) {
-    if (recordsArr[i].qrcodeData === qrcodeData && recordsArr[i].foregroundColor === foregroundColor && recordsArr[i].foregroundColor === foregroundColor) {
+    if (
+      recordsArr[i].qrcodeData === qrcodeData &&
+      recordsArr[i].foregroundColor === foregroundColor &&
+      recordsArr[i].foregroundColor === foregroundColor &&
+      recordsArr[i].qrcodeType === qrcodeType
+    ) {
       isNeedPush = false;
       id = i + 1;
     }

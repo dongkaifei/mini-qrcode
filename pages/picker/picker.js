@@ -45,7 +45,6 @@ Page({
         }
       }
     })
-    console.log(this.data.colorData.pickerData.hex);
   },
   setRpxRatio() {
     //设置rpxRatio
