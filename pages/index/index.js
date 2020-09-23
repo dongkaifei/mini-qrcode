@@ -10,7 +10,8 @@ Page({
     qrcodeData: "",
     foregroundColor: '',
     backgroundColor: '',
-    isShowWxAvatar: false
+    isShowWxAvatar: false,
+    token: ""
   },
   onLoad: function () {
 
@@ -33,11 +34,17 @@ Page({
       foregroundColor,
       backgroundColor
     } = this.data;
-    const qrcodeType = isShowWxAvatar ? 'avatar' : 'normal';
-    const id = setRecords(qrcodeData, qrcodeType, foregroundColor, backgroundColor, avatarUrl);
-    wx.navigateTo({
-      url: `/pages/qrcode/qrcode?id=${id}`
-    })
+    wx.showLoading({
+      title: '生成中...',
+      mask: true
+    });
+    this.doMsgSecCheck(qrcodeData, () => {
+      const qrcodeType = isShowWxAvatar ? 'avatar' : 'normal';
+      const id = setRecords(qrcodeData, qrcodeType, foregroundColor, backgroundColor, avatarUrl);
+      wx.navigateTo({
+        url: `/pages/qrcode/qrcode?id=${id}`
+      })
+    });
   },
   toPickColor(e) {
     const colorid = e.currentTarget.dataset.colorid;
@@ -59,5 +66,33 @@ Page({
     this.setData({
       isShowWxAvatar: e.detail.value
     });
+  },
+  doMsgSecCheck(text, cb) {
+    wx.serviceMarket.invokeService({
+      service: 'wxee446d7507c68b11',
+      api: 'msgSecCheck',
+      data: {
+        "Action": "TextApproval",
+        "Text": text
+      },
+    }).then(res => {
+      const resData = JSON.parse(res.data);
+      if (resData.Response && resData.Response.EvilTokens && resData.Response.EvilTokens.length) {
+        wx.showModal({
+          title: '⚠️警告',
+          content: '输入内容不能包含恶意敏感词汇',
+        })
+      } else {
+        cb();
+      }
+      wx.hideLoading();
+    })
+  },
+  onShareAppMessage() {
+    return {
+      title: '非常好用的工具，推荐给你～',
+      path: '/pages/index/index',
+      imageUrl: '/images/qrcode-image.jpg'
+    }
   }
 })

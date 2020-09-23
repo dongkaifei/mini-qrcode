@@ -73,5 +73,12 @@ Page({
     wx.switchTab({
       url: '/pages/index/index'
     });
+  },
+  onShareAppMessage() {
+    return {
+      title: '非常好用的工具，推荐给你～',
+      path: '/pages/index/index',
+      imageUrl: '/images/qrcode-image.jpg'
+    }
   }
 })
